@@ -50,7 +50,7 @@ export default function App() {
           alignItems: "center",
           width: 380, // Keep width as needed
           height: 400, // Adjust height to fit buttons
-          borderRadius: 30,
+          borderRadius: 40,
           backgroundColor: "#f0f0f0", // Optional background
           padding: 20, // Adds spacing
         }}
