@@ -12,9 +12,16 @@ import "react-native-gesture-handler";
 
 export default function App() {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", color: "blue" }}>
-        QURAN
+    <View
+      style={{
+        backgroundColor: "#4e5ba1",
+        flex: 1,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Text style={{ fontSize: 20, fontWeight: "bold", color: "#fff" }}>
+        QURAN PAK
       </Text>
 
       <View
@@ -25,6 +32,7 @@ export default function App() {
           flex: 0.35,
           height: 100,
           width: 400,
+          margin: 10,
         }}
       >
         <Image
@@ -33,7 +41,7 @@ export default function App() {
           resizeMode="contain"
         />
       </View>
-      <Text style={{ fontWeight: "bold" }}>Features</Text>
+      <Text style={{ color: "#fff", fontWeight: "bold" }}>Features</Text>
       <View
         style={{
           flexDirection: "row",
@@ -41,16 +49,16 @@ export default function App() {
           justifyContent: "space-evenly", // Distributes evenly
           alignItems: "center",
           width: 380, // Keep width as needed
-          height: 350, // Adjust height to fit buttons
+          height: 400, // Adjust height to fit buttons
           borderRadius: 30,
           backgroundColor: "#f0f0f0", // Optional background
-          padding: 10, // Adds spacing
+          padding: 20, // Adds spacing
         }}
       >
         <TouchableOpacity
           onPress={() => onPressButton("Quran")}
           style={{
-            backgroundColor: "#841584",
+            backgroundColor: "#4e5ba1",
             padding: 10,
             borderRadius: 10,
             alignItems: "center",
@@ -74,7 +82,7 @@ export default function App() {
         <TouchableOpacity
           onPress={() => onPressButton("Hadith")}
           style={{
-            backgroundColor: "#841584",
+            backgroundColor: "#4e5ba1",
             padding: 10,
             borderRadius: 10,
             alignItems: "center",
@@ -98,7 +106,7 @@ export default function App() {
         <TouchableOpacity
           onPress={() => onPressButton("Dua")}
           style={{
-            backgroundColor: "#841584",
+            backgroundColor: "#4e5ba1",
             padding: 10,
             borderRadius: 10,
             alignItems: "center",
@@ -122,7 +130,7 @@ export default function App() {
         <TouchableOpacity
           onPress={() => onPressButton("Tasbeeh")}
           style={{
-            backgroundColor: "#841584",
+            backgroundColor: "#4e5ba1",
             padding: 10,
             borderRadius: 10,
             alignItems: "center",
