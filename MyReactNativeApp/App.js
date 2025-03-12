@@ -340,7 +340,7 @@
 
 // export default App;
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   View,
   FlatList,
@@ -350,16 +350,13 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-
-const API_URL_ARABIC = "https://api.alquran.cloud/v1/quran/quran-uthmani"; // Arabic Text
-const API_URL_TRANSLATION = "https://api.alquran.cloud/v1/quran/en.asad"; // English Translation
+import useFetchAyahs from "./useFetchAyahs"; // Importing custom hook
 
 const AyahItem = ({ arabicText, translation }) => (
   <View style={styles.row}>
     <View style={styles.column}>
       <Text style={styles.translation}>{translation}</Text>
     </View>
-
     <View style={styles.column}>
       <Text style={styles.arabic}>{arabicText}</Text>
     </View>
@@ -367,34 +364,7 @@ const AyahItem = ({ arabicText, translation }) => (
 );
 
 const App = () => {
-  const [ayahs, setAyahs] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    Promise.all([
-      fetch(API_URL_ARABIC).then((res) => res.json()),
-      fetch(API_URL_TRANSLATION).then((res) => res.json()),
-    ])
-      .then(([arabicData, translationData]) => {
-        const verses = [];
-        arabicData.data.surahs.forEach((surah, surahIndex) => {
-          surah.ayahs.forEach((ayah, ayahIndex) => {
-            verses.push({
-              id: ayah.number,
-              arabicText: ayah.text,
-              translation:
-                translationData.data.surahs[surahIndex].ayahs[ayahIndex].text,
-            });
-          });
-        });
-        setAyahs(verses);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false);
-      });
-  }, []);
+  const { ayahs, loading } = useFetchAyahs();
 
   if (loading) {
     return (
@@ -421,6 +391,7 @@ const App = () => {
   );
 };
 
+// Styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -448,12 +419,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: "#2c3e50",
-    textAlign: "right", // Align Arabic text to the right
+    textAlign: "right",
   },
   translation: {
     fontSize: 16,
     color: "#34495e",
-    textAlign: "left", // Align translation to the left
+    textAlign: "left",
   },
   loader: {
     flex: 1,
