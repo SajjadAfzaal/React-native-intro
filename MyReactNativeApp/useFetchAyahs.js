@@ -20,8 +20,8 @@ const useFetchAyahs = () => {
           surah.ayahs.forEach((ayah, ayahIndex) => {
             verses.push({
               id: ayah.number,
-              // surahNumber: surah.number, // Add Surah Number
-              // parahNumber: ayah.juz, // Add Juz (Parah) Number
+              surahNumber: surah.number, // Add Surah Number
+              parahNumber: ayah.juz, // Add Juz (Parah) Number
               arabicText: ayah.text,
               translation:
                 translationRes.data.surahs[surahIndex].ayahs[ayahIndex].text,
